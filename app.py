@@ -7,6 +7,16 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
+# PALETA PLOTLY
+px.defaults.template = "plotly_dark"
+px.defaults.color_discrete_sequence = [
+    "#D28C3C",  # ámbar
+    "#78965A",  # oliva
+    "#AA5A3C",  # terracota
+    "#C9A24D",  # dorado
+    "#8C5A2B",  # café
+]
+
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from sklearn.compose import ColumnTransformer
@@ -28,63 +38,66 @@ st.set_page_config(
 
 CUSTOM_CSS = """
 <style>
-/* Fondo elegante oscuro */
+/* Fondo cálido tipo otoño */
 [data-testid="stAppViewContainer"]{
-  background:
-    radial-gradient(circle at 15% 15%, rgba(255, 183, 77, 0.12), transparent 45%),
-    radial-gradient(circle at 85% 20%, rgba(38, 198, 218, 0.10), transparent 40%),
-    radial-gradient(circle at 20% 85%, rgba(255, 138, 101, 0.10), transparent 45%),
-    #0f1117;
+  background: radial-gradient(circle at 15% 15%, rgba(200, 140, 60, 0.18), transparent 45%),
+              radial-gradient(circle at 85% 20%, rgba(120, 150, 90, 0.18), transparent 40%),
+              radial-gradient(circle at 20% 85%, rgba(170, 90, 60, 0.18), transparent 45%),
+              #0f0b08;
 }
-[data-testid="stHeader"]{background: rgba(0,0,0,0);}
 
+[data-testid="stHeader"]{ background: rgba(0,0,0,0); }
+
+/* Variables de color */
 :root{
-  --card: rgba(255,255,255,0.07);
-  --card-border: rgba(255,255,255,0.12);
-  --text: rgba(255,255,255,0.94);
-  --muted: rgba(255,255,255,0.70);
-  --accent: rgba(255,183,77,0.95);      /* Ámbar */
-  --accent-2: rgba(38,198,218,0.90);    /* Teal */
+  --card: rgba(255, 240, 220, 0.06);
+  --card-border: rgba(255, 200, 140, 0.18);
+  --text: rgba(255, 245, 235, 0.95);
+  --muted: rgba(220, 200, 180, 0.70);
+  --accent: rgba(210, 140, 60, 0.95);      /* ámbar */
+  --accent-2: rgba(120, 150, 90, 0.95);    /* oliva */
 }
 
-h1,h2,h3,h4,h5,h6, p, label, div, span { color: var(--text); }
+/* Tipografía */
+h1,h2,h3,h4,h5,h6,p,label,div,span { color: var(--text); }
 small { color: var(--muted); }
 
-/* Cards / métricas */
+/* Cards */
 .block-container { padding-top: 1.4rem; }
+
 div[data-testid="stMetric"]{
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: 18px;
   padding: 14px 14px 10px 14px;
-  box-shadow: 0 12px 34px rgba(0,0,0,0.35);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
 }
 
 /* Tabs */
 button[data-baseweb="tab"]{
-  background: rgba(255,255,255,0.05) !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
+  background: rgba(255, 230, 200, 0.05) !important;
+  border: 1px solid rgba(255, 200, 140, 0.20) !important;
   border-radius: 14px !important;
   margin-right: 6px !important;
 }
+
 button[data-baseweb="tab"][aria-selected="true"]{
-  border: 1px solid rgba(255,183,77,0.85) !important;
-  box-shadow: 0 0 0 2px rgba(255,183,77,0.25);
+  border: 1px solid var(--accent) !important;
+  box-shadow: 0 0 0 2px rgba(210, 140, 60, 0.25);
 }
 
 /* Sidebar */
 section[data-testid="stSidebar"]{
-  background: rgba(255,255,255,0.04);
-  border-right: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255, 235, 210, 0.03);
+  border-right: 1px solid rgba(255, 200, 140, 0.15);
 }
 
 /* Botones primarios */
 button[kind="primary"]{
-  background: linear-gradient(135deg, #ffb74d, #ff8a65) !important;
-  color: #1a1a1a !important;
-  border-radius: 14px !important;
+  background: linear-gradient(135deg, rgba(210,140,60,1), rgba(170,90,60,1)) !important;
   border: none !important;
-  font-weight: 600;
+  color: #fff !important;
+  box-shadow: 0 8px 22px rgba(210,140,60,0.45);
 }
 </style>
 """
