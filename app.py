@@ -30,7 +30,7 @@ CSV_PATH = "car_price_prediction.csv.csv"
 # Page config + CSS (bonito)
 # ---------------------------
 st.set_page_config(
-    page_title="Car Price Studio 🚗",
+    page_title="Car Price Studio 🚗 ",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -325,7 +325,7 @@ def plot_feature_importance(pipe: Pipeline, X_train: pd.DataFrame, top_k=25):
 # ---------------------------
 colA, colB = st.columns([1.4, 1])
 with colA:
-    st.markdown("## 🚗 Car Price Studio")
+    st.markdown("##  Car Price Studio 🚗")
 with colB:
     st.markdown(
         "<div style='background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); "
