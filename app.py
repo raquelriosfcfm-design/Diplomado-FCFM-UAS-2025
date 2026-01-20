@@ -14,7 +14,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.impute import SimpleImputer
 from xgboost import XGBRegressor
-CSV_PATH = "car_price_prediction.csv"
+CSV_PATH = "car_price_prediction.csv.csv"
 
 # ---------------------------
 # Page config + CSS (bonito)
