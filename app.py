@@ -326,18 +326,7 @@ def plot_feature_importance(pipe: Pipeline, X_train: pd.DataFrame, top_k=25):
 colA, colB = st.columns([1.4, 1])
 with colA:
     st.markdown("##  Car Price Studio 🚗")
-with colB:
-    st.markdown(
-        "<div style='background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.10); "
-        "border-radius: 18px; padding: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.25);'>"
-        "<div style='font-size: 0.95rem; color: rgba(255,255,255,0.78);'>Tips</div>"
-        "<ul style='margin-top: 8px; color: rgba(255,255,255,0.92);'>"
-        "<li>Usa el <b>sidebar</b> para controlar rare categories y el modelo.</li>"
-        "<li>En <b>Predicción</b>, puedes hacer una predicción individual o por lote.</li>"
-        "</ul>"
-        "</div>",
-        unsafe_allow_html=True
-    )
+
 
 st.write("")
 
