@@ -30,8 +30,7 @@ CSV_PATH = "car_price_prediction.csv.csv.csv.csv.csv.csv.csv"
 # Page config + CSS (bonito)
 # ---------------------------
 st.set_page_config(
-    page_title="Car Price Studio",
-    page_icon="🚗",
+    page_title="Car Price Studio 🚗",
     layout="wide",
     initial_sidebar_state="expanded",
 )
