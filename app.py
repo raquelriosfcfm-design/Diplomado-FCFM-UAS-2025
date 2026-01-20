@@ -387,14 +387,17 @@ cfg = dict(
 # Load / clean data
 # ---------------------------
 def load_csv(file) -> pd.DataFrame:
+    # Caso 1: CSV incluido en el repositorio (ruta)
     if isinstance(file, str):
-        # Caso: CSV incluido en el repositorio
-        return pd.read_csv(file)
-    else:
-        # Caso: CSV subido con file_uploader
-        file.seek(0)  # 👈 MUY IMPORTANTE para Streamlit Cloud
         return pd.read_csv(file)
 
+    # Caso 2: CSV subido con st.file_uploader
+    if hasattr(file, "read"):
+        file.seek(0)  # 🔑 CLAVE para Streamlit Cloud
+        return pd.read_csv(file)
+
+    # Caso inesperado
+    raise ValueError("No se pudo cargar el archivo CSV")
 
 if uploaded is None:
     st.info("📎 Sube tu CSV en el sidebar para empezar.")
