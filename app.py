@@ -382,12 +382,19 @@ cfg = dict(
     reg_lambda=reg_lambda,
 )
 
+
 # ---------------------------
 # Load / clean data
 # ---------------------------
-@st.cache_data(show_spinner=False)
 def load_csv(file) -> pd.DataFrame:
-    return pd.read_csv(file)
+    if isinstance(file, str):
+        # Caso: CSV incluido en el repositorio
+        return pd.read_csv(file)
+    else:
+        # Caso: CSV subido con file_uploader
+        file.seek(0)  # 👈 MUY IMPORTANTE para Streamlit Cloud
+        return pd.read_csv(file)
+
 
 if uploaded is None:
     st.info("📎 Sube tu CSV en el sidebar para empezar.")
