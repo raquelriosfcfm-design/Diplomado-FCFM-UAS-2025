@@ -398,8 +398,8 @@ profile = get_basic_profile(df)
 # ---------------------------
 # Tabs
 # ---------------------------
-tab_overview, tab_eda, tab_train, tab_predict = st.tabs(
-    ["✨ Overview", "📊 EDA", "🧠 Entrenar", "🔮 Predicción"]
+tab_eda, tab_overview, tab_train, tab_predict = st.tabs(
+    [ "📊 EDA", "✨ Overview", "🧠 Entrenar", "🔮 Predicción"]
 )
 
 with tab_overview:
@@ -414,13 +414,13 @@ with tab_overview:
     else:
         c3.metric("Price promedio", "N/A")
 
-    # Prod. year promedio
+    # Prod. año promedio
     # Ojo: tu dataset trae "Prod. year" (con punto y espacio)
     if "Prod. year" in df.columns:
         prod_year_mean = pd.to_numeric(df["Prod. year"], errors="coerce").mean()
-        c4.metric("Prod. year promedio", f"{prod_year_mean:.0f}" if pd.notna(prod_year_mean) else "N/A")
+        c4.metric("Prod. año promedio", f"{prod_year_mean:.0f}" if pd.notna(prod_year_mean) else "N/A")
     else:
-        c4.metric("Prod. year promedio", "N/A")
+        c4.metric("Prod. año promedio", "N/A")
 
     st.write("")
     left, right = st.columns([1.15, 0.85], gap="large")
